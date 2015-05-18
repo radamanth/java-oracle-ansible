@@ -1,0 +1,11 @@
+---
+# ppa repository code
+java_oracle_apt_repository: "ppa:webupd8team/java"
+
+# You could switch to oracel-java7-installer
+java_oracle_installer: "oracle-java8-installer"
+
+# Change to the java version tyou need e.g. oracle-java7-set-default
+java_oracle_set_default: "oracle-java8-set-default"
+
+

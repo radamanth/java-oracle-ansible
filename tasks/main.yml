@@ -1,0 +1,24 @@
+---
+- name: Add repo for oracle jdk
+  apt_repository: repo={{ java_oracle_apt_repository }}
+
+- name: Autoaccept license for Java
+  action: shell echo {{ java_oracle_installer}} shared/accepted-oracle-license-v1-1 select true | sudo /usr/bin/debconf-set-selections
+
+- name: Update APT package cache
+  action: apt update_cache=yes
+
+- name: Install Java 
+  action: apt pkg={{ java_oracle_installer }} state=latest install_recommends=yes
+  register: installJava
+
+
+- name: Set Java  Env
+  action: apt pkg={{ java_oracle_set_default }}   state=latest install_recommends=yes
+  register: setJava
+
+- debug: var=installJava
+
+- debug: var=setJava
+
+
